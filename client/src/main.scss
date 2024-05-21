@@ -1,0 +1,21 @@
+:root {
+    padding: 2em;
+}
+
+%template {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+table {
+    border: 1px solid black;
+    border-radius: 5px 10px;
+    padding: 1rem;
+    
+    :where(thead, tbody) tr {
+        th,td {
+            @extend %template;
+        }
+    }
+}

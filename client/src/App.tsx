@@ -1,12 +1,11 @@
 import { useState } from 'react'
-
+import Table from './components/Table'
+import './main.scss'
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      Merhaba Dünya!
-      {count}
+      <Table />
     </>
   )
 }
