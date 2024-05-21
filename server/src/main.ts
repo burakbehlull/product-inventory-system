@@ -1,10 +1,10 @@
 import express, {Application, Request, Response} from 'express'
 import cors, { CorsOptions } from 'cors'
 import morgan from 'morgan'
-
+import {inquery, prepareQuery} from './helpers/queries.js'
 const app:Application = express()
 
-const port = process.env.PORT || 80
+const port = process.env.PORT || 3000
 
 const corsOptions : CorsOptions = {
     origin: true,
@@ -20,8 +20,11 @@ app.use(cors(corsOptions))
 app.use(morgan('dev'))
 
 // sayfalar
-app.use('/', (req:Request,res:Response)=> {
+
+app.get('/', (req:Request,res:Response)=> {
 	res.send("merhaba product system!")
 })
+
+
 app.listen(port, ()=> console.log(`${port} portunda başlatıldı.`))
 
