@@ -1,4 +1,4 @@
-import { InsertType,InsertManyType, UpdateOneType, UpdateOneIdType } from '../types/IQueryTypes.js'
+import { InsertType,InsertManyType, UpdateOneType, UpdateOneIdType, DeleteOneType, DeleteOneIdType } from '../types/IQueryTypes.js'
 import {inquery} from './sqlActions.js'
 
 async function findAll(key:string){
@@ -13,24 +13,23 @@ async function insert({ name, row, value }:InsertType) {
     return await inquery(`INSERT INTO ${name}(${row}) VALUES(${value})`)
 }
 
-async function updateOne({
-    name, 
-    key, 
-    value, 
-    whereKey, 
-    whereValue
-}:UpdateOneType){
+async function updateOne({ name, key, value, whereKey, whereValue }:UpdateOneType){
     return await inquery(`UPDATE ${name} SET ${key} = '${value}' WHERE ${whereKey} = ${whereValue}`)
 }
 
-async function updateOneId({
-    name, 
-    targetId,
-    key, 
-    value, 
-}:UpdateOneIdType){
+async function updateOneId({ name, targetId, key, value }:UpdateOneIdType){
     return await inquery(`UPDATE ${name} SET ${key} = '${value}' WHERE id = ${targetId}`)
 }
+
+async function deleteOne({tableName, key, value}:DeleteOneType){
+    return await inquery(`DELETE FROM ${tableName} WHERE ${key} = '${value}'`)
+}
+
+
+async function deleteOneId({tableName, value}:DeleteOneIdType){
+    return await inquery(`DELETE FROM ${tableName} WHERE id = '${value}'`)
+}
+
 
 export {
     findAll,
@@ -38,5 +37,8 @@ export {
     insertMany,
 
     updateOne,
-    updateOneId
+    updateOneId,
+    
+    deleteOne,
+    deleteOneId
 }
