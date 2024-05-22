@@ -1,7 +1,7 @@
 import express, {Application, Request, Response} from 'express'
 import cors, { CorsOptions } from 'cors'
 import morgan from 'morgan'
-import {inquery, prepareQuery} from './helpers/queries.js'
+import {findAll} from './helpers/queries.js'
 const app:Application = express()
 
 const port = process.env.PORT || 3000
@@ -21,6 +21,10 @@ app.use(morgan('dev'))
 
 // sayfalar
 
+app.get('/q', (req:Request,res:Response)=> {
+    console.log(findAll('todos'))
+	res.send("oke")
+})
 app.get('/', (req:Request,res:Response)=> {
 	res.send("merhaba product system!")
 })
