@@ -30,7 +30,20 @@ async function prepareQuery(query:string, values:any[]){
     console.log('IQuery', IQuery)
 }
 
+async function colonQuery(query:string, values:object){
+    const IQuery = await db.execute(query, values,(err, data)=>{
+        if(err){
+            console.log(err)
+            return err
+        }
+        console.log(data)
+        return data
+    })
+    return IQuery
+}
+
 export {
     inquery,
+    colonQuery,
     prepareQuery
 }

@@ -31,6 +31,7 @@ async function deleteOneId({tableName, value}:DeleteOneIdType){
 }
 
 
+
 export {
     findAll,
     insert,
