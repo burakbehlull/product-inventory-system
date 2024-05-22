@@ -1,49 +1,29 @@
 import db from '../config/db.js'
+import util from 'util'
 
-async function inquery(query:string){
-    const IQuery = await db.execute(query, (err,data)=> {
-        if(err){
-            console.log(err)
-            return err
-        }
+const inqueryPromise = util.promisify(db.execute.bind(db));
 
-        console.log(data)
-    })
-    return IQuery
-}
-
-async function prepareQuery(query:string, values:any[]){
-    const IQuery= await db.prepare(query, (err, state)=>{
-        if(err) {
-            console.log(err)
-            return err
-        }
-        state.execute(values, (err,data)=> {
-            if(err) {
-                console.log(err)
-                return err
-            }
-            console.log('prepare', data)
-        })
-
-    })
-    console.log('IQuery', IQuery)
+async function inquery(query: string) {
+    try {
+        const IQuery = await inqueryPromise(query);
+        return IQuery;
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
 }
 
 async function colonQuery(query:string, values:object){
-    const IQuery = await db.execute(query, values,(err, data)=>{
-        if(err){
-            console.log(err)
-            return err
-        }
-        console.log(data)
-        return data
-    })
-    return IQuery
+    try {
+        const IQuery = await inqueryPromise(query, values);
+        return IQuery;
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
 }
 
 export {
     inquery,
-    colonQuery,
-    prepareQuery
+    colonQuery
 }

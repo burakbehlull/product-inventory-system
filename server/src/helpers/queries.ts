@@ -2,7 +2,8 @@ import { InsertType,InsertManyType, UpdateOneType, UpdateOneIdType, DeleteOneTyp
 import {inquery} from './sqlActions.js'
 
 async function findAll(key:string){
-    return await inquery(`SELECT * FROM ${key}`)
+    const result = await inquery(`SELECT * FROM ${key}`)
+    return result
 }
 
 async function insertMany({ name, rows, values }:InsertManyType) {

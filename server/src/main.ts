@@ -2,12 +2,15 @@ import express, {Application, Request, Response} from 'express'
 import cors, { CorsOptions } from 'cors'
 import morgan from 'morgan'
 import {findAll} from './helpers/queries.js'
+
+import productRoute from './routers/productRoute.js'
+
 const app:Application = express()
 
 const port = process.env.PORT || 3000
 
 const corsOptions : CorsOptions = {
-    origin: true,
+    origin: "*",
     credentials: true
 }
 
@@ -21,10 +24,8 @@ app.use(morgan('dev'))
 
 // sayfalar
 
-app.get('/q', (req:Request,res:Response)=> {
-    console.log(findAll('todos'))
-	res.send("oke")
-})
+app.use('/api', productRoute)
+
 app.get('/', (req:Request,res:Response)=> {
 	res.send("merhaba product system!")
 })
