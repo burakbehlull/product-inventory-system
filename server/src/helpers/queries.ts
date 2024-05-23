@@ -14,12 +14,14 @@ async function insert({ name, row, value }:InsertType) {
     return await colonQuery(query, value)
 }
 
-async function updateOne({ name, key, value, whereKey, whereValue }:UpdateOneType){
-    return await inquery(`UPDATE ${name} SET ${key} = '${value}' WHERE ${whereKey} = ${whereValue}`)
+async function updateOne({ name, targetKey, whereKey, values }:UpdateOneType){
+    const query = `UPDATE ${name} SET ${targetKey} = ? WHERE ${whereKey} = ?`
+    return await colonQuery(query, values)
 }
 
-async function updateOneId({ name, targetId, key, value }:UpdateOneIdType){
-    return await inquery(`UPDATE ${name} SET ${key} = '${value}' WHERE id = ${targetId}`)
+async function updateOneById({ name, key, values }:UpdateOneIdType){
+    const query = `UPDATE ${name} SET ${key} = ? WHERE id = ?`
+    return await colonQuery(query,values)
 }
 
 async function deleteOne({tableName, key, value}:DeleteOneType){
@@ -38,7 +40,7 @@ export {
     insert,
 
     updateOne,
-    updateOneId,
+    updateOneById,
     
     deleteOne,
     deleteOneId

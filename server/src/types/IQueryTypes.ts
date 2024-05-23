@@ -10,16 +10,14 @@ interface InsertType {
 }
 interface UpdateOneType {
     name: string,
+    targetKey: string,
     whereKey: string,
-    whereValue: string|any,
-    key: string,
-    value: string|any,
+    values: Array<any> | any
 }
 interface UpdateOneIdType {
     name: string,
-    targetId: string|any,
     key: string,
-    value: string|any,
+    values: string|any,
 }
 interface DeleteOneType {
     tableName: string,
