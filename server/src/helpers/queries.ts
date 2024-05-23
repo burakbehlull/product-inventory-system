@@ -1,13 +1,15 @@
 import { InsertType, UpdateOneType, UpdateOneIdType, DeleteOneType, DeleteOneIdType } from '../types/IQueryTypes.js'
 import {inquery,colonQuery} from './sqlActions.js'
 import {repeatString} from './littleHelpers.js'
+
 async function findAll(key:string){
     const result = await inquery(`SELECT * FROM ${key}`)
     return result
 }
 
 async function insert({ name, row, value }:InsertType) {
-    let valueLen = repeatString('?', value.length)
+    const rowSplit = row.split(',')
+    let valueLen = repeatString('?', rowSplit.length)
     const query = `INSERT INTO ${name} (${row}) VALUES (${valueLen})`
     return await colonQuery(query, value)
 }

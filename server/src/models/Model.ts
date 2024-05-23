@@ -1,4 +1,7 @@
 import {findAll, insert} from '../helpers/queries.js'
+interface xd { 
+    values: Promise<any>
+}
 class Model {
     name;
     columns;
@@ -10,11 +13,13 @@ class Model {
     all(){
         return findAll(this.name)
     }
-    create(value:Array<any>){
+
+    create(...values:any[]){
+        
         return insert({
             name: this.name,
             row: this.columns,
-            value
+            value: values
         })
     }
     
