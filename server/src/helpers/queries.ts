@@ -1,17 +1,15 @@
 import { InsertType,InsertManyType, UpdateOneType, UpdateOneIdType, DeleteOneType, DeleteOneIdType } from '../types/IQueryTypes.js'
-import {inquery} from './sqlActions.js'
-
+import {inquery,colonQuery} from './sqlActions.js'
+import {repeatString} from './littleHelpers.js'
 async function findAll(key:string){
     const result = await inquery(`SELECT * FROM ${key}`)
     return result
 }
 
-async function insertMany({ name, rows, values }:InsertManyType) {
-    return await inquery(`INSERT INTO ${name}(${rows}) VALUES(${values})`)
-}
-
 async function insert({ name, row, value }:InsertType) {
-    return await inquery(`INSERT INTO ${name}(${row}) VALUES(${value})`)
+    let valueLen = repeatString('?', value.length)
+    const query = `INSERT INTO ${name} (${row}) VALUES (${valueLen})`
+    return await colonQuery(query, value)
 }
 
 async function updateOne({ name, key, value, whereKey, whereValue }:UpdateOneType){
@@ -36,7 +34,6 @@ async function deleteOneId({tableName, value}:DeleteOneIdType){
 export {
     findAll,
     insert,
-    insertMany,
 
     updateOne,
     updateOneId,

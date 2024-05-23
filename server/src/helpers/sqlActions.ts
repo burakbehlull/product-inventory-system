@@ -5,6 +5,7 @@ const inqueryPromise = util.promisify(db.execute.bind(db));
 
 async function inquery(query: string) {
     try {
+        
         const IQuery = await inqueryPromise(query);
         return IQuery;
     } catch (err) {
@@ -13,9 +14,10 @@ async function inquery(query: string) {
     }
 }
 
-async function colonQuery(query:string, values:object){
+async function colonQuery(query:string, params:Array<any>){
+    const getQuery = query
     try {
-        const IQuery = await inqueryPromise(query, values);
+        const IQuery = await inqueryPromise(getQuery, params);
         return IQuery;
     } catch (err) {
         console.error(err);

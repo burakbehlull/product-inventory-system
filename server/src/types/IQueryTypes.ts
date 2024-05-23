@@ -6,7 +6,7 @@ interface InsertManyType {
 interface InsertType {
     name: string,
     row: string | any,
-    value: string | any
+    value: Array<any> | any,
 }
 interface UpdateOneType {
     name: string,
