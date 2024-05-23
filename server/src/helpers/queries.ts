@@ -1,4 +1,4 @@
-import { InsertType,InsertManyType, UpdateOneType, UpdateOneIdType, DeleteOneType, DeleteOneIdType } from '../types/IQueryTypes.js'
+import { InsertType, UpdateOneType, UpdateOneIdType, DeleteOneType, DeleteOneIdType } from '../types/IQueryTypes.js'
 import {inquery,colonQuery} from './sqlActions.js'
 import {repeatString} from './littleHelpers.js'
 async function findAll(key:string){
