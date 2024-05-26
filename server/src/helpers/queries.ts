@@ -25,15 +25,15 @@ async function updateOneById({ name, key, values }:UpdateOneIdType){
 }
 
 async function deleteOne({tableName, key, value}:DeleteOneType){
-    return await inquery(`DELETE FROM ${tableName} WHERE ${key} = '${value}'`)
+    const query = `DELETE FROM ${tableName} WHERE ${key} = ?`
+    return await colonQuery(query, [value])
 }
 
 
-async function deleteOneId({tableName, value}:DeleteOneIdType){
-    return await inquery(`DELETE FROM ${tableName} WHERE id = '${value}'`)
+async function deleteOneId({tableName, id}:DeleteOneIdType){
+    const query = `DELETE FROM ${tableName} WHERE id = ?`
+    return await colonQuery(query, [id])
 }
-
-
 
 export {
     findAll,

@@ -1,6 +1,7 @@
 import {Response, Request} from 'express'
 import {findAll} from '../helpers/queries.js'
 import Product from '../models/Product.js'
+
 async function productsAll(req:Request, res:Response){
     const products = await Product.all()
     res.json(products)
@@ -13,19 +14,43 @@ async function productAdd(req:Request, res:Response){
     res.json(product)
 }
 
-async function productOneUpdate(req:Request, res:Response){
+async function productOneByIdUpdate(req:Request, res:Response){
     const id = Number(req.params.id)
     const {value, key} = req.body
-    const update:any = Product.updateOneById(key, {
-        id,
-        value
-    })
+    const update:any = await Product.updateOneById(key, {id,value})
     res.json(update)
-
 }
+
+async function productOneByIdDelete(req:Request, res:Response){
+    try {
+        const id = Number(req.params.id)
+        const product = await Product.deleteOneById(id)
+
+        if(!product.affectedRows){
+            res.json({
+                message: 'Kayıt bulunamadı.',
+                success: false,
+            })
+        }
+        res.json({
+            message: 'Başarılı',
+            success: true,
+            product: product
+        })
+        
+    } catch (err) {
+        res.json({
+            message: "Başarısız",
+            success: false,
+            error: err
+        })
+    }
+}
+
 
 export {
     productsAll,
     productAdd,
-    productOneUpdate
+    productOneByIdUpdate,
+    productOneByIdDelete
 }

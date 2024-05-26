@@ -22,12 +22,12 @@ interface UpdateOneIdType {
 interface DeleteOneType {
     tableName: string,
     key: string,
-    value: string
+    value: string | number | any
 }
 
 interface DeleteOneIdType {
     tableName: string,
-    value: string
+    id: number
 }
 
 export {

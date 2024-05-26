@@ -1,4 +1,4 @@
-import {findAll, insert,updateOneById} from '../helpers/queries.js'
+import {findAll, insert,updateOneById, deleteOneId} from '../helpers/queries.js'
 import {UpdateOneIdType} from '../types/IModelTypes.js'
 class Model {
     name;
@@ -27,6 +27,14 @@ class Model {
             values: [value, id]
         })
     }
+    
+    deleteOneById(id:number){
+        return deleteOneId({
+            tableName: this.name,
+            id: id
+        })
+    }
+
     
 }
 
