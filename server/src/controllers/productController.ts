@@ -3,22 +3,67 @@ import {findAll} from '../helpers/queries.js'
 import Product from '../models/Product.js'
 
 async function productsAll(req:Request, res:Response){
-    const products = await Product.all()
-    res.json(products)
+    try {
+        const products = await Product.all()
+        res.json(products)
+    } catch (err) {
+        res.json({
+            error: err
+        })
+    }
 }
 
 async function productAdd(req:Request, res:Response){
-    const {productName, piece, unitPrice, total} = req.body
+    try {
+        const {productName, piece, unitPrice, total} = req.body
     
-    const product:any = await Product.create(productName, piece, unitPrice, total)
-    res.json(product)
+        const product= await Product.create(productName, piece, unitPrice, total)
+        
+        if(!product.affectedRows){
+            res.json({
+                message: 'Kayıt başarısız eklenmedi.',
+                success: false,
+            })
+        }
+        res.json({
+            message: 'Başarılı',
+            success: true,
+            product: product
+        })
+    } catch (err) {
+        res.json({
+            message: 'Başarısız',
+            success: false,
+            error: err
+        })
+    }
 }
 
 async function productOneByIdUpdate(req:Request, res:Response){
-    const id = Number(req.params.id)
-    const {value, key} = req.body
-    const update:any = await Product.updateOneById(key, {id,value})
-    res.json(update)
+    try {
+        const id = Number(req.params.id)
+        const {value, key} = req.body
+        const product = await Product.updateOneById(key, {id,value})
+        
+        if(!product.changedRows){
+            res.json({
+                message: 'Güncellenmedi',
+                success: false,
+            })
+        }
+        res.json({
+            message: "Başarılı",
+            success: true,
+            product: product
+        })
+
+    } catch (err) {
+        res.json({
+            message: "Başarısız",
+            success: false,
+            error: err
+        })
+    }
 }
 
 async function productOneByIdDelete(req:Request, res:Response){
