@@ -1,5 +1,5 @@
 import {Response, Request} from 'express'
-import {findAll} from '../helpers/queries.js'
+import {findAll,updateAllById} from '../helpers/queries.js'
 import Product from '../models/Product.js'
 
 async function productsAll(req:Request, res:Response){
@@ -39,7 +39,7 @@ async function productAdd(req:Request, res:Response){
     }
 }
 
-async function productOneByIdUpdate(req:Request, res:Response){
+async function productOneUpdateById(req:Request, res:Response){
     try {
         const id = Number(req.params.id)
         const {value, key} = req.body
@@ -66,7 +66,7 @@ async function productOneByIdUpdate(req:Request, res:Response){
     }
 }
 
-async function productOneByIdDelete(req:Request, res:Response){
+async function productOneDeleteById(req:Request, res:Response){
     try {
         const id = Number(req.params.id)
         const product = await Product.deleteOneById(id)
@@ -92,10 +92,41 @@ async function productOneByIdDelete(req:Request, res:Response){
     }
 }
 
+async function productUpdateAllById(req:Request, res:Response) {
+    try {
+        const id = Number(req.params.id)
+        const {productName, piece, unitPrice, total} = req.body
+        const product = await Product.updateAllById({
+            values: [productName, piece, unitPrice, total],
+            id:id
+        })
+        
+        if(!product.changedRows){
+            res.json({
+                message: 'Güncellenmedi',
+                success: false,
+            })
+        }
+        res.json({
+            message: "Başarılı",
+            success: true,
+            product: product
+        })
+
+    } catch (err) {
+        res.json({
+            message: "Başarısız",
+            success: false,
+            error: err
+        })
+    }
+}
+
 
 export {
     productsAll,
     productAdd,
-    productOneByIdUpdate,
-    productOneByIdDelete
+    productUpdateAllById,
+    productOneUpdateById,
+    productOneDeleteById,
 }

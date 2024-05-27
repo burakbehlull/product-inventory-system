@@ -1,5 +1,5 @@
-import {findAll, insert,updateOneById, deleteOneId} from '../helpers/queries.js'
-import {UpdateOneIdType} from '../types/IModelTypes.js'
+import {findAll, insert,updateOneById, deleteOneId, updateAllById} from '../helpers/queries.js'
+import {UpdateOneIdType,UpdateAllByIdType} from '../types/IModelTypes.js'
 class Model {
     name;
     columns;
@@ -20,6 +20,15 @@ class Model {
             value: values
         })
     }
+    updateAllById({values, id}:UpdateAllByIdType){
+        return updateAllById({
+            tableName: this.name,
+            columns: this.columns,
+            values: values,
+            id: id
+        })
+    }
+
     updateOneById(key:string, {value, id}:UpdateOneIdType){
         return updateOneById({
             name: this.name,
@@ -34,6 +43,7 @@ class Model {
             id: id
         })
     }
+    
 
     
 }

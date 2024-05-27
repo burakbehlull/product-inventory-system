@@ -8,6 +8,13 @@ interface InsertType {
     row: string | any,
     value: Array<any> | any,
 }
+
+interface UpdateAllIdType {
+    tableName: string,
+    columns: string,
+    values: any,
+    id: number
+}
 interface UpdateOneType {
     name: string,
     targetKey: string,
@@ -30,10 +37,12 @@ interface DeleteOneIdType {
     id: number
 }
 
+
 export {
     InsertType,
     InsertManyType,
 
+    UpdateAllIdType,
     UpdateOneType,
     UpdateOneIdType,
 

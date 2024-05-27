@@ -1,4 +1,4 @@
-import { InsertType, UpdateOneType, UpdateOneIdType, DeleteOneType, DeleteOneIdType } from '../types/IQueryTypes.js'
+import { InsertType, UpdateAllIdType,UpdateOneType, UpdateOneIdType, DeleteOneType, DeleteOneIdType } from '../types/IQueryTypes.js'
 import {inquery,colonQuery} from './sqlActions.js'
 import {repeatString} from './littleHelpers.js'
 
@@ -17,6 +17,23 @@ async function insert({ name, row, value }:InsertType) {
 async function updateOne({ name, targetKey, whereKey, values }:UpdateOneType){
     const query = `UPDATE ${name} SET ${targetKey} = ? WHERE ${whereKey} = ?`
     return await colonQuery(query, values)
+}
+
+async function updateAllById({tableName,columns,values,id}:UpdateAllIdType){
+    const cols = columns.split(',')
+    const convertCols = []
+    if(!columns.length === values.length){
+        console.log("eşit değil")
+        return
+    }
+    for(let col of cols){
+        convertCols.push(`${col} = ?`)
+    }
+    const colsString = convertCols.toString()
+
+    const query = `UPDATE ${tableName} SET ${colsString} WHERE id = ?`
+    return await colonQuery(query, [...values, id])
+
 }
 
 async function updateOneById({ name, key, values }:UpdateOneIdType){
@@ -40,6 +57,7 @@ export {
     insert,
 
     updateOne,
+    updateAllById,
     updateOneById,
     
     deleteOne,

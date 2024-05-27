@@ -3,6 +3,13 @@ interface UpdateOneIdType {
     id: number
 }
 
+
+interface UpdateAllByIdType{
+    values: any[] | any,
+    id: number
+}
+
 export {
-    UpdateOneIdType
+    UpdateOneIdType,
+    UpdateAllByIdType
 }
