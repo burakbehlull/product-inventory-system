@@ -1,8 +1,6 @@
 import React from 'react'
+import {TableType} from '../types/ITypes'
 
-interface TableType {
-    data: object | any
-}
 const Table:React.FC<TableType> = ({data}) => {
     return (
         <>
