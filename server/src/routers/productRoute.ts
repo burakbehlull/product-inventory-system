@@ -2,11 +2,11 @@ import exress, {Router} from 'express'
 import {productsAll, productAdd, productOneUpdateById, productOneDeleteById,productUpdateAllById } from '../controllers/productController.js'
 const router : Router = exress.Router()
 
-router.route('/product').get(productsAll)
-router.route('/product').post(productAdd)
-router.route('/product/:id').patch(productOneUpdateById)
-router.route('/product/:id').put(productUpdateAllById)
-router.route('/product/:id').delete(productOneDeleteById)
+router.route('/products').get(productsAll)
+router.route('/products').post(productAdd)
+router.route('/products/:id').patch(productOneUpdateById)
+router.route('/products/:id').put(productUpdateAllById)
+router.route('/products/:id').delete(productOneDeleteById)
 
 
 export default router
