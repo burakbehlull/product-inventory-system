@@ -29,25 +29,26 @@ const ProductOneUpdate = () => {
     }
 
     return(
-        <>
+        <div className="item">
             <p>Tekli Güncelleme İşlemi: </p>
             {data && <>
                 {data?.success ? "Başarıyla güncellendi" : "İşlem başarısız."}
             </>}
             {error && error?.message}
-            <br />
-            <br />
-            <label>{choose}: </label>
-            <input type='text' value={value} onChange={handleChange} />
+
             <select name="keys" onChange={(e:any)=> setChoose(e.target.value)}>
                 <option value="productName">Ürün Adı</option>
                 <option value="piece">Adet</option>
                 <option value="unitPrice">Birin Fiyat</option>
                 <option value="total">Toplam</option>
             </select>
-            <br /><br />
+            
+            <div>
+                <label>{choose}: </label>
+                <input type='text' value={value} onChange={handleChange} />
+            </div>
             <button onClick={handleSubmit}>Güncelle</button>
-        </>
+        </div>
     )
 }
 

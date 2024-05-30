@@ -22,20 +22,32 @@ function Home(){
         <section id="home">
             {error ?? error?.message}
             <Table data={data}/>
+            
             <article>
-                <h3>Ürün İşlemleri</h3>
-                <p>Seçili id: <b>{id}</b></p>
-                <button onClick={()=> setAddIsVisible(!addIsVisible)}>Ürün Ekle</button>
-                <Modal isVisible= {addIsVisible} children={<ProductAdd />} />
-                <br /><br />
-                <button onClick={()=> setUpdateIsVisible(!updateIsVisible)}>Çoklu Ürün Güncelle</button>
-                <Modal isVisible= {updateIsVisible} children={<ProductUpdate />} />
-                <br /><br />
-                <button onClick={()=> setUpdateOneIsVisible(!updateOneIsVisible)}>Tekli Ürün Güncelle</button>
-                <Modal isVisible= {updateOneIsVisible} children={<ProductOneUpdate />} />
-                <br /><br />
-                <button onClick={()=> setDeleteIsVisible(!deleteIsVisible)}>Tekli Silme</button>
-                <Modal isVisible= {deleteIsVisible} children={<ProductDelete />} />
+                <div>
+                    <h3>Ürün İşlemleri</h3>
+                    <p>Seçili id: <b>{id}</b></p>
+                </div>
+
+                <div>
+                    <button onClick={()=> setAddIsVisible(!addIsVisible)}>Ürün Ekle</button>
+                    <Modal isVisible= {addIsVisible} children={<ProductAdd />} />
+                </div>
+
+                <div>
+                    <button onClick={()=> setUpdateIsVisible(!updateIsVisible)}>Çoklu Ürün Güncelle</button>
+                    <Modal isVisible= {updateIsVisible} children={<ProductUpdate />} />
+                </div>
+                
+                <div>
+                    <button onClick={()=> setUpdateOneIsVisible(!updateOneIsVisible)}>Tekli Ürün Güncelle</button>
+                    <Modal isVisible= {updateOneIsVisible} children={<ProductOneUpdate />} />
+                </div>
+
+                <div>
+                    <button onClick={()=> setDeleteIsVisible(!deleteIsVisible)}>Tekli Silme</button>
+                    <Modal isVisible= {deleteIsVisible} children={<ProductDelete />} />
+                </div>
             </article>
         </section>
     )  

@@ -8,4 +8,6 @@ const db = mysql.createConnection({
     namedPlaceholders: true
 })
 
+console.log(db)
+
 export default db

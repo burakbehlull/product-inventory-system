@@ -5,6 +5,21 @@
 section#home {
     display: flex;
     gap: 2em;
+    article {
+        display: flex;
+        flex-direction: column;
+        gap:10px;
+        // background:red;
+    }
+}
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    div {
+        display: flex;
+        gap:10px;
+    }
 }
 
 %template {

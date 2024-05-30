@@ -21,14 +21,14 @@ const ProductOneUpdate = () => {
     }
 
     return(
-        <>
+        <div className="item">
             <p>Tekli Silme İşlemi: </p>
             {data && <>
                 {data?.success ? "Başarıyla silindi." : "İşlem başarısız."}
             </>}
             {error && error?.message}
             <button onClick={handleSubmit}>Sil</button>
-        </>
+        </div>
     )
 }
 
