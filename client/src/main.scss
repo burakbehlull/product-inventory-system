@@ -2,6 +2,11 @@
     padding: 2em;
 }
 
+section#home {
+    display: flex;
+    gap: 2em;
+}
+
 %template {
     padding: 5px;
     border-radius: 5px;

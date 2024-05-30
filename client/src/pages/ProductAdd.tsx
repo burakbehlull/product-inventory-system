@@ -4,7 +4,6 @@ import { useState } from 'react'
 import {BACKEND_URI} from '../../../config.json'
 
 const ProductAdd = () => {
-
     const [form, setForm] = useState({
         productName: "",
         piece: 0,
@@ -36,12 +35,12 @@ const ProductAdd = () => {
 
     return(
         <>
+            <p>Toplu Güncelleme İşlemi: </p>
             {data && <>
                 {data?.success ? "Başarıyla eklendi" : "İşlem başarısız."}
             </>}
             {error && error?.message}
-
-            <br /><br />
+            <br />
             <label htmlFor="productName">Product Name: </label>
             <input type='text' name='productName' value={form.productName} onChange={handleChange} />
             <br /><br />
@@ -54,7 +53,7 @@ const ProductAdd = () => {
             <label htmlFor="total">Total: </label>
             <input type='number' name='total' value={form.total} onChange={handleChange} />
             <br /><br />
-            
+
             <button onClick={handleSubmit}>Ekle</button>
 
         </>

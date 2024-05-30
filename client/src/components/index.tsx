@@ -1,11 +1,5 @@
-import Home from "./Home";
-import ProductAdd from "./ProductAdd";
-import Table from "./Table";
-import NotFound from "./NotFound";
+import Modal from "./Modal"
 
 export {
-    Home,
-    ProductAdd,
-    Table,
-    NotFound
+    Modal
 }
