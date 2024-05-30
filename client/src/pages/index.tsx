@@ -1,11 +1,16 @@
 import Home from "./Home";
-import ProductAdd from "./ProductAdd";
 import Table from "./Table";
 import NotFound from "./NotFound";
 
+import ProductAdd from "./ProductAdd";
+import ProductUpdate from "./ProductUpdate";
+
 export {
     Home,
-    ProductAdd,
     Table,
+
+    ProductAdd,
+    ProductUpdate,
+    
     NotFound
 }

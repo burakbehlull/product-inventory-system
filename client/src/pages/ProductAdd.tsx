@@ -35,7 +35,7 @@ const ProductAdd = () => {
 
     return(
         <>
-            <p>Toplu Güncelleme İşlemi: </p>
+            <p>Toplu Ekleme İşlemi: </p>
             {data && <>
                 {data?.success ? "Başarıyla eklendi" : "İşlem başarısız."}
             </>}
