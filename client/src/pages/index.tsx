@@ -4,6 +4,7 @@ import NotFound from "./NotFound";
 
 import ProductAdd from "./ProductAdd";
 import ProductUpdate from "./ProductUpdate";
+import ProductOneUpdate from "./ProductOneUpdate";
 
 export {
     Home,
@@ -11,6 +12,7 @@ export {
 
     ProductAdd,
     ProductUpdate,
+    ProductOneUpdate,
     
     NotFound
 }
