@@ -36,7 +36,6 @@ const ProductOneUpdate = () => {
             </>}
             {error && error?.message}
             <br />
-            <p>{id}</p>
             <br />
             <label>{choose}: </label>
             <input type='text' value={value} onChange={handleChange} />

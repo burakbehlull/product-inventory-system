@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { BACKEND_URI } from '../../../config.json'
-import {setId} from '../store/slices/keepSlices'
 import {useSelector} from 'react-redux'
 
 const ProductUpdate = () => {
@@ -44,7 +43,6 @@ const ProductUpdate = () => {
             </>}
             {error && error?.message}
             <br /><br />
-            <p>{id}</p>
             <br />
             <label htmlFor="productName">Product Name: </label>
             <input type='text' name='productName' value={form.productName} onChange={handleChange} />
