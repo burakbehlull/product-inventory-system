@@ -28,7 +28,7 @@ const Table:React.FC<TableType> = ({data}) => {
                             <td>{item.piece}</td>
                             <td>{item.unitPrice}</td>
                             <td>{item.total}</td>
-                            <td> <button onClick={()=>dispatch(setId(item.id))}>id al</button> </td>
+                            <td> <button onClick={()=>dispatch(setId(item.id))}>seç</button> </td>
                         </tr>
                     ))}
                 </tbody>
