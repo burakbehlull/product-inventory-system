@@ -1,7 +1,13 @@
 import React from 'react'
+
+import { useDispatch } from 'react-redux'
+import {setId} from '../store/slices/keepSlices'
+
 import {TableType} from '../types/ITypes'
+import {AppDispatch} from '../store/store'
 
 const Table:React.FC<TableType> = ({data}) => {
+    const dispatch = useDispatch<AppDispatch>()
     return (
         <>
             <table>
@@ -22,6 +28,7 @@ const Table:React.FC<TableType> = ({data}) => {
                             <td>{item.piece}</td>
                             <td>{item.unitPrice}</td>
                             <td>{item.total}</td>
+                            <td> <button onClick={()=>dispatch(setId(item.id))}>id al</button> </td>
                         </tr>
                     ))}
                 </tbody>
