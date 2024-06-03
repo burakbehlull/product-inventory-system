@@ -8,6 +8,8 @@ const db = mysql.createConnection({
     namedPlaceholders: true
 })
 
-console.log(db)
+if(db){
+    console.log('Sunucuya bağlanıldı')
+}
 
 export default db

@@ -48,6 +48,7 @@ function Home(){
                     <button onClick={()=> setDeleteIsVisible(!deleteIsVisible)}>Tekli Silme</button>
                     <Modal isVisible= {deleteIsVisible} children={<ProductDelete />} />
                 </div>
+
             </article>
         </section>
     )  
