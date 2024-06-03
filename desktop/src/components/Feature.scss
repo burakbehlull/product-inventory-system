@@ -1,0 +1,36 @@
+$color: #f3f4f7;
+
+.feature{
+    display:flex;
+    width: 100%;
+    padding-left: .8rem;
+    gap: 1rem;
+    list-style-type: none;
+    border: 1px solid black;
+    border-radius: 10% 10%;
+    align-items: center;
+    li {
+        color: $color;
+        &:nth-child(1){
+            width: 100%;
+            height: 100%;
+            
+            -webkit-user-select: none;
+            -webkit-app-region: drag;
+            padding: .9rem 0rem;
+            background-color: transparent;
+            &:hover {
+                cursor: move;
+            }
+        } 
+        &:nth-child(2){
+            padding: .4rem 1rem;
+            background-color: #bd3f3f;
+            cursor: pointer;
+            &:hover {
+                background-color: #c41d1d;
+            }
+        }
+    }
+    
+}
