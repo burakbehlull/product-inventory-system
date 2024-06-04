@@ -12,6 +12,7 @@
     "client:build":"cd client && npm run build",
 
     "desktop":"cd desktop && npm run dev",
+    "mobile":"cd mobile && npm start",
 	
 	  "server": "concurrently \"npm run server:build\" \"npm run server:dev\"",
     "dev": "concurrently \"npm run client:dev\" \"npm run server:build\" \"npm run server:dev\""
