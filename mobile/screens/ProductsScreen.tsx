@@ -1,10 +1,15 @@
 import { Text } from 'react-native'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { Table } from '../components/index'
 
-import {BACKEND_URI} from '../../config.json'
+
 function ProductScreen(){
+
     return (
         <>
             <Text>Product SCREEN</Text>
+            <Table data={null} />
         </>
     )
 }
