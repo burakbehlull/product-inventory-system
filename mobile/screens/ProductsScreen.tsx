@@ -1,4 +1,4 @@
-import { Text } from 'react-native'
+import { Text, View } from 'react-native'
 import { useEffect, useState } from 'react'
 
 import axios from 'axios'
@@ -18,10 +18,10 @@ function ProductScreen(){
         fetchData()
     }, [])
     return (
-        <>
+        <View style={{padding: 10}}>
             <Text>Product SCREEN</Text>
             <Table data={products} error={error} />
-        </>
+        </View>
     )
 }
 

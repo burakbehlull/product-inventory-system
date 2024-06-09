@@ -1,5 +1,5 @@
-import {TableTypes} from './TableTypes'
+import {TableType} from './TableTypes'
 
 export {
-    TableTypes
+    TableType
 }

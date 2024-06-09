@@ -1,12 +1,12 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { TableTypes } from '../types/index'
+import { TableType } from '../types/index'
 
-const Table :React.FC<TableTypes> = ({data, error}) => {
+const Table :React.FC<TableType> = ({data, error}) => {
     return (
-        <View>
+        <View style={{paddingTop: 2}}>
             {error && <Text> {error.message} </Text>}
-            {data?.map((item:any)=> <Text> {item.name} </Text>)}
+            {data?.map((item:any)=> <Text key={item.id}> {item.name} </Text>)}
         </View>
     )
 }
