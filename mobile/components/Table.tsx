@@ -1,12 +1,13 @@
 import React from 'react'
-import { Text, View} from 'react-native'
+import { Text, View } from 'react-native'
 import { TableTypes } from '../types/index'
 
-const Table :React.FC<TableTypes> = ({data}) => {
+const Table :React.FC<TableTypes> = ({data, error}) => {
     return (
-        <>
-            {data.map((item:any)=> <Text> {item.name} </Text>)}
-        </>
+        <View>
+            {error && <Text> {error.message} </Text>}
+            {data?.map((item:any)=> <Text> {item.name} </Text>)}
+        </View>
     )
 }
 
