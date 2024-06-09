@@ -5,8 +5,9 @@ const initialStore = {
 const reducers = (state:any, action:any)=> {
     switch(action.type) {
         case 'SET_ID':
-            state.id = parseInt(action.payload, 10)
-            return {id: parseInt(action.payload, 10)}
+            const value = parseInt(action.payload, 10)
+            state.id = value
+            return {id: value}
     default:
         return state
     }
