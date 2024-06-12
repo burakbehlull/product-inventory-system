@@ -38,6 +38,7 @@ function UpdateOneScreen(){
     
     return (
         <View style={styles.container}>
+            <Text> {data ?? "İşlem başarılı"} </Text>
             <Text style={TableStyles.headerText}>Choose ID: {getId} </Text>
             <View style={styles.box}>
                 <RNPickerSelect

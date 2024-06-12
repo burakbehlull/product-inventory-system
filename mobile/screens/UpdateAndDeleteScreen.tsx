@@ -55,7 +55,7 @@ function UpdateAndDeleteScreen(){
             />
             <View style={TableStyles.space}></View>
             <Text style={UpdateAndDeleteScreenStyles.text}>UPDATE SCREEN</Text>
-
+            <Text> {data ?? "İşlem başarılı"} </Text>
             <View style={UpdateAndDeleteScreenStyles.box}>
                 <TextInput
                     style={UpdateAndDeleteScreenStyles.input}

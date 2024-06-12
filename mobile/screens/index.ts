@@ -1,7 +1,7 @@
 import HomeScreen from "./HomeScreen"
 
 import ProductsScreen from "./ProductsScreen"
-import AddScreen from "./AddAndDeleteScreen"
+import AddScreen from "./AddScreen"
 import UpdateAndDeleteScreen from "./UpdateAndDeleteScreen"
 import UpdateOneScreen from "./UpdateOneScreen"
 
