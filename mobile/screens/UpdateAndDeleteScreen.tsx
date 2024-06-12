@@ -1,8 +1,8 @@
 import { Text, Button, View, TextInput } from 'react-native'
 import { useSelector } from 'react-redux'
 import { TableStyles,UpdateAndDeleteScreenStyles } from '../styles/index'
-import axios from 'axios'
 import { useState } from 'react'
+import axios from 'axios'
 
 function UpdateAndDeleteScreen(){
     const [data, setData] = useState<any>([])
@@ -28,8 +28,16 @@ function UpdateAndDeleteScreen(){
     }
 
     async function UpdateProduct(){
-        if(nameInput){
-            const response = await axios.put(`URL/${getId}`).then((res)=>{
+        
+        const formObject = {
+            productName: nameInput,
+            piece: parseInt(pieceInput, 10),
+            unitPrice: parseInt(unitPriceInput, 10),
+            total: parseInt(totalInput, 10)
+        }
+
+        if(formObject){
+            const response = await axios.put(`URL/${getId}`, formObject).then((res)=>{
                 setData(res.data)
             }).catch((err)=>setError(err))
             return response
@@ -63,7 +71,7 @@ function UpdateAndDeleteScreen(){
                     value={pieceInput}
                     placeholder='Piece'
                     keyboardType='numeric'
-                    />        
+                />        
                     
                 <TextInput
                     style={UpdateAndDeleteScreenStyles.input}

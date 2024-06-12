@@ -25,5 +25,12 @@ export const UpdateAndDeleteScreenStyles = StyleSheet.create({
         paddingBottom: 5,
         borderRadius: 15,
         margin: 2
+    },
+    secondBox: {
+        display: 'flex', 
+        width: '80%', 
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        justifyContent: 'center'
     }
 }) 

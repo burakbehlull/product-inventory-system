@@ -1,7 +1,7 @@
 import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 
-import { HomeScreen, ProductsScreen, AddScreen, UpdateAndDeleteScreen } from '../screens/index'
+import { HomeScreen, ProductsScreen, AddScreen, UpdateAndDeleteScreen,UpdateOneScreen } from '../screens/index'
 
 function Router(){
     const Tab = createBottomTabNavigator()
@@ -12,6 +12,7 @@ function Router(){
                 <Tab.Screen name='Products' component={ProductsScreen}></Tab.Screen>
                 <Tab.Screen name='Add' component={AddScreen}></Tab.Screen>
                 <Tab.Screen name='Update and Delete' component={UpdateAndDeleteScreen}></Tab.Screen>
+                <Tab.Screen name='Update One' component={UpdateOneScreen}></Tab.Screen>
             </Tab.Navigator>
         </NavigationContainer>
     )
