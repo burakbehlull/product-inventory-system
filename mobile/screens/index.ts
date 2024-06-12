@@ -1,13 +1,13 @@
 import HomeScreen from "./HomeScreen"
 
 import ProductsScreen from "./ProductsScreen"
-import AddAndDeleteScreen from "./AddAndDeleteScreen"
-import UpdateScreen from "./UpdateScreen"
+import AddScreen from "./AddAndDeleteScreen"
+import UpdateAndDeleteScreen from "./UpdateAndDeleteScreen"
 
 export {
     HomeScreen,
 
     ProductsScreen,
-    AddAndDeleteScreen,
-    UpdateScreen
+    AddScreen,
+    UpdateAndDeleteScreen
 }

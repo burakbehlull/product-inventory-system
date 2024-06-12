@@ -1,6 +1,7 @@
 import { Text } from 'react-native'
 
-function AddAndDeleteScreen(){
+function AddScreen(){
+    
     return (
         <>
             <Text>Add And Delete SCREEN</Text>
@@ -8,4 +9,4 @@ function AddAndDeleteScreen(){
     )
 }
 
-export default AddAndDeleteScreen
+export default AddScreen
